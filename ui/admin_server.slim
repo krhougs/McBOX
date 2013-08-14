@@ -1,0 +1,70 @@
+- unless @machines == nil
+  |<script>$("document").ready(function(){
+  - @machines.each do |t|
+    - @e = "alert(a);window.location.reload();"
+    == "$(\"\#close\-#{t.id}\").click(function()\{$.post(\"\/server\/delete\/#{t.id}\",\"\",function\(a\)\{#{@e}\}\);\}\);"
+  |});</script>
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_admin
+          table.table.table-condensed.table-hover
+            thead
+              tr.info
+                th=i18n.admin.server0.id
+                th=i18n.admin.server0.texts
+                th=i18n.admin.server0.user
+                th=i18n.admin.server0.time
+                th=i18n.admin.server0.status
+                th=i18n.admin.server0.op
+              tbody
+                - @machines.each do |m|
+                  tr
+                    td=m.id
+                    td=m.texts
+                    td=m.belong_to
+                    td
+                      time datetime=(m.time) 
+                    td=m.status
+                    td
+                      a href=("/server/#{m.id}")
+                        i.fui-eye
+                      a id=("close-#{m.id}") href="javascript:;"
+                        i.fui-cross
+
+          .span8
+            h2=i18n.admin.server0.new_one.title
+            form.form-horizontal action="/server/new" method="post" name="add_machine"
+              .control-group
+                label.control-label for="machine[texts]"=i18n.admin.server0.texts
+                .controls
+                  input type="text" name="machine[texts]" placeholder=(i18n.admin.server0.texts)
+              .control-group
+                label.control-label for="machine[belong_to]"=i18n.admin.server0.new_one.belong_to
+                .controls
+                  input type="text" name="machine[belong_to]" placeholder=(i18n.admin.server0.new_one.belong_to)
+              .control-group
+                label.control-label for="machine[address]"=i18n.admin.server0.new_one.add
+                .controls
+                  input type="text" name="machine[address]" placeholder=(i18n.admin.server0.new_one.add)
+              .control-group
+                label.control-label for="machine[port]"=i18n.admin.server0.new_one.port
+                .controls
+                  input type="text" name="machine[port]" placeholder=(i18n.admin.server0.new_one.port)
+              .control-group
+                label.control-label for="machine[user]"=i18n.admin.server0.new_one.user
+                .controls
+                  input type="text" name="machine[user]" placeholder=(i18n.admin.server0.new_one.user)
+              .control-group
+                label.control-label for="machine[pass]"=i18n.admin.server0.new_one.pass
+                .controls
+                  input type="password" name="machine[pass]" placeholder=(i18n.admin.server0.new_one.pass)
+              .control-group
+                label.control-label for="machine[salt]"=i18n.admin.server0.new_one.salt
+                .controls
+                  input type="password" name="machine[salt]" placeholder=(i18n.admin.server0.new_one.salt)
+              .control-group
+                .controls
+                  button.btn.btn-inverse type="submit"=i18n.admin.g.submit

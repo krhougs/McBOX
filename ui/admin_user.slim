@@ -1,0 +1,32 @@
+|<script>$("document").ready(function(){
+- @users.each do |u|
+  - @e = "alert(a);window.location.reload();"
+  == "$(\"\#delete\-#{u.name}\").click(function()\{$.post(\"\/admin\/user\/#{u.name}\",\"\",function\(a\)\{#{@e}\}\);\}\);"
+|});</script>
+a.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_admin
+          table.table.table-condensed.table-hover
+            thead
+              tr.info
+                th=i18n.admin.user0.id
+                th=i18n.admin.user0.name
+                th=i18n.admin.user0.email
+                th=i18n.admin.user0.time
+                th=i18n.admin.user0.op
+              tbody
+                - @users.each do |u|
+                  tr
+                    td=u.id
+                    td=u.name
+                    td=u.email
+                    td
+                      time datetime=(u.created_at) 
+                    td
+                      a href=("/admin/user/#{u.name}")
+                        i.fui-eye
+                      a id=("delete-#{u.name}") href="javascript:;"
+                        i.fui-cross

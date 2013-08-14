@@ -1,0 +1,13 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_server
+          - if @online
+            .well
+	          input#broadcast_i type="text" placeholder=(i18n.server.game.broadcast)
+	          a.btn.btn-primary#broadcast_send=i18n.server.game.s
+	        .well
+	          a.btn.btn-primary#savemap=i18n.server.game.savemap
+==javascript_include_tag @i.to_s

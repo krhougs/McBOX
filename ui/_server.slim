@@ -1,0 +1,14 @@
+.btn-toolbar
+  .btn-group
+ 	a.btn.btn-primary.active style="font-size:20px" href="#fakelink"
+ 	  =@b
+    a.btn.btn-primary#navi-home href=("/server/home/#{@i}") 
+      i.fui-cmd
+  	a.btn.btn-primary#navi-user href=("/server/user/#{@i}")
+  	  i.icon-user
+ 	a.btn.btn-primary#navi-game href=("/server/game/#{@i}")
+ 	  i.icon-gamepad
+ 	a.btn.btn-primary#navi-mod href=("/server/mod/#{@i}")
+ 	  i.icon-plus
+ 	a.btn.btn-primary#navi-other href=("/server/other/#{@i}")
+ 	  i.icon-ellipsis-horizontal

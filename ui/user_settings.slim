@@ -1,0 +1,61 @@
+- unless @t == nil
+  |<script>$("document").ready(function(){
+    - @t.each do |t|
+      - @e = "alert(a);window.location.reload();"
+      == "$(\"\#close\-#{t.id}\").click(function()\{$.post(\"\/ticket\/close\/#{t.id}\",\"\",function\(a\)\{#{@e}\}\);\}\);"
+    |});
+  </script>
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        h1=i18n.my.summary.title
+        .span6
+          h3=i18n.my.summary.ticket.title1
+          table.table.table-bordered
+            thead
+              tr.info
+                th=i18n.my.summary.ticket.title0
+                th=i18n.my.summary.ticket.status
+                th=i18n.my.summary.ticket.op
+              tbody
+                - if @t != nil
+                  - @t.each do |t|
+                    tr.success
+                      td=t.title
+                      td=t.status
+                      td
+                        a href=("/ticket/#{t.id}")
+                          i.fui-eye
+                        -unless t.status == "close"
+                          a id=("close-#{t.id}") href=("#")
+                            i.fui-checkbox-checked
+                - else
+                  tr.info
+                    td=i18n.my.summary.ticket.noticket
+                    td
+                    td
+                  tr.success
+                    td==i18n.my.summary.ticket.new(@u.name)
+                    td
+                    td
+          h3=i18n.my.summary.server.title0
+          - if @my_machine != nil
+            p==i18n.my.summary.server.intro("/server/#{@my_machine.id}")
+          - else
+            p==i18n.my.summary.server.nos
+        .span4
+          img.img-polaroid src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest @u.email}.png?r=G&s=120") width="120" height="120"
+          h5= @u.name
+          p
+            = i18n.user.show.sign_up_at
+            br
+            time datetime=(@u.created_at.iso8601) 
+          h4=i18n.user.form.change_pass
+          form.vertical action="/admin/pass/#{@u.name}" method="post"
+            .field
+              input name="id" type="hidden" value=(@u.id)
+              input  id="user_password" name="user[password]" size="30" type="password" placeholder=(i18n.user.form.password) 
+            .field
+              input  id="user_password_confirmation" name="user[password_confirmation]" size="30"type="password" placeholder=(i18n.user.form.password_r) 
+            button.btn.btn-primary#r_submit=i18n.user.form.submit

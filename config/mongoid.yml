@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: mongoid1
+      hosts:
+        - localhost:27017

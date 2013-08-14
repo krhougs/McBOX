@@ -1,0 +1,47 @@
+- unless @tickets == nil
+  |<script>$("document").ready(function(){
+  - @tickets.each do |t|
+    - @e = "alert(a);window.location.reload();"
+    == "$(\"\#close\-#{t.id}\").click(function()\{$.post(\"\/ticket\/close\/#{t.id}\",\"\",function\(a\)\{#{@e}\}\);\}\);"
+  |});</script>
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+	      .span10
+	        == slim :_admin
+	        .span3
+		        h5=i18n.admin.sets
+				form action="/admin/apply" method="post" name="admin"
+				  input name="titles" type="hidden" value="site_title"
+				  input name="page" type="hidden" value="home"
+			      input name="site_title" placeholder=(i18n.admin.g.sitename) type="text" value=(get_db_settings(:site_title))
+			      button.btn type="submit"=i18n.admin.g.submit
+		    .span6
+			  h5=i18n.admin.tickets.title(@tickets.count)
+              table.table
+                thead
+                  tr.info
+                    th=i18n.admin.tickets.title0
+                    th=i18n.admin.tickets.user
+                    th=i18n.admin.tickets.status
+                    th=i18n.admin.tickets.op
+                  tbody
+                    - if @tickets.count != 0
+                      - @tickets.each do |t|
+                        tr.success
+                          td=t.title
+                          td=t.user
+                          td=t.status
+                          td
+                            a href=("/ticket/#{t.id}")
+                              i.fui-eye
+                            -unless t.status == "close"
+                              a id=("close-#{t.id}") href=("#")
+                                i.fui-checkbox-checked
+                    - else
+                      tr.success
+                        td==i18n.admin.tickets.new_one
+                        td
+                        td
+                        td

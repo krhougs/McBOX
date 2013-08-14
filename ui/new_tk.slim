@@ -1,0 +1,15 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+		  h4=i18n.post.edit.edit
+	      form#tk_f action="/ticket" method="post" 
+	        input name="topic[action]" type="hidden" value="new"
+	        input name="topic[user]" type="hidden" value=(@u)
+		    input name="topic[title]" type="text"  placeholder=(i18n.post.edit.title)
+	        input#tk_texts name="topic[texts]" type="hidden" value=""
+	  	    #wmd-panel
+	  	    br
+		    a.btn.btn-primary#tk_n_s
+		      =i18n.post.edit.submit

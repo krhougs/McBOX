@@ -1,0 +1,19 @@
+javascript:
+    $(document).ready(function(){
+    $(".signup").keyup(function(){CreatUser();});
+     });
+.row
+  .span12
+    .signup
+      .login-screen
+        .login-icon
+          img src="images/login/icon.png"
+            h4=i18n.user.form.signup
+        .login-form
+          form name="login" action="/signup" method="post"
+            input.signup#R_user name="user[name]" type="text" placeholder=(i18n.user.form.username_l) value=(params[:name])
+            input.signup#R_mail name="user[email]" type="text" placeholder=(i18n.user.form.email) value=(params[:email])
+            input.signup#R_pass name="user[password]" placeholder=(i18n.user.form.password) type="password"
+            input.signup#R_repass name="user[password_confirmation]" placeholder=(i18n.user.form.password_r) type="password"
+            button.btn.btn-primary.btn-large.btn-block#R_input type="subbit" disabled="" 
+              =i18n.user.form.btn

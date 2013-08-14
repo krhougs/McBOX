@@ -1,0 +1,35 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_server
+          - if @online
+            .well.well-large
+              h4=i18n.server.user.op.t
+              p
+                =i18n.server.user.op.list
+                -@api_s.getOpList.each do |n|
+                  code=n["name"]
+    	        input#op_input type="text" placeholder=""
+    	        a.btn.btn-primary#op_add=i18n.server.user.op.add
+    	        a.btn.btn-primary#op_del=i18n.server.user.op.del
+            .well.well-large
+              h4=i18n.server.user.ban.t
+              p
+                =i18n.server.user.ban.list
+                -@api_s.getBannedPlayers.each do |n|
+                  code=n
+    	        input#ban_input type="text" placeholder=""
+    	        a.btn.btn-primary#ban_add=i18n.server.user.ban.add
+    	        a.btn.btn-primary#ban_del=i18n.server.user.ban.del
+            .well.well-large
+              h4=i18n.server.user.white.t
+              p
+                =i18n.server.user.white.list
+                -@api_s.getWhitelist.each do |n|
+                  code=n
+    	        input#white_input type="text" placeholder=""
+    	        a.btn.btn-primary#white_add=i18n.server.user.white.add
+    	        a.btn.btn-primary#white_del=i18n.server.user.white.del
+==javascript_include_tag @i.to_s

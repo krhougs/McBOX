@@ -1,0 +1,34 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_server
+          -if @online
+            .well
+              h4=i18n.server.mod.list.t
+              table.table
+                thead
+                 tr
+                    td="#{i18n.server.mod.list.name}&#{i18n.server.mod.list.status.t}"
+                    td=i18n.server.mod.list.texts
+                    td=i18n.server.mod.list.op
+                tbody
+                  - @api_s.getPlugins.each do |p|
+                    tr
+                      td
+                        =p["name"]
+                        br
+                        code
+                          =p["version"]
+                      td=p["description"]
+                      td
+                        .switch id=("switch-#{p["name"]}") data-on-label=(i18n.server.mod.list.status.enable) data-off-label=(i18n.server.mod.list.status.disable)
+                          -if p["enabled"] == true
+                            input id=("check-#{p["name"]}") type="checkbox" checked=""
+                          -else
+                            input id=("check-#{p["name"]}") type="checkbox"
+              h4=i18n.server.mod.new.info
+              #file_upload_1
+
+==javascript_include_tag @i.to_s

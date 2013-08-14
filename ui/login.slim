@@ -1,0 +1,19 @@
+javascript:
+  $(document).ready(function(){
+    $(".login").keyup(function(){Login();});
+  });
+
+.row
+  .span12
+    .login
+      .login-screen
+        .login-icon
+          img src="images/login/icon.png"
+            h4=i18n.user.form.login
+        .login-form
+          form name="login" action="/login" method="post"
+            input.signup#L_user name="name" type="text" placeholder=(i18n.user.form.username_l) value=(params[:name])
+            input.signup#L_pass name="password" placeholder=(i18n.user.form.password) type="password"
+            button.btn.btn-primary.btn-large.btn-block#L_input type="subbit" disabled="" 
+              =i18n.user.form.btn
+            == i18n.user.form.login_sign

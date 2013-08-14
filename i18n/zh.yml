@@ -1,0 +1,163 @@
+titles:
+  su: 完成！
+  home: 首页
+  newp: 新话题
+  admin: 管理区域
+  admin_su: "管理: %1 被更改！"
+  new_su: 已发布！
+  new_em: 请勿留空！
+notice:
+  changed: 成功修改
+js:
+  timeago: locale/timeago.zh-cn
+  app: locale/app.zh-cn
+my:
+  summary:
+    title: 概况
+    ticket:
+      title1: 工单
+      title0: 标题
+      status: 状态
+      op: 操作
+      noticket: 还没有工单
+      new: <a href="/ticket/new/%1">点击这里创建工单</a>
+    server:
+      title0: 我的服务器
+      nos: 还没有开通任何MC服务器
+      intro: 请点击<a href="%1">这里</a>管理服务器
+user:
+  form:
+    login: 登录
+    signup: 注册
+    username_l: 用户名，可使用字母、数字、下划线及短横线
+    password: 密码，允许留空，可使用字母、数字、下划线及短横线
+    password_r: 再次输入
+    email: E-mail
+    btn: 请先填写上面的表单
+    submit: 提交
+    change_pass: 修改密码
+    new_pass: 新密码：
+    login_sign: '没有帐号？点击 <a class="button green small pop" href="/signup">这里注册</a>'
+  show:
+    reply: !!pl
+      0: 
+      1: 回复(1)
+      n: 回复(%1)
+    sign_up_at: 注册于
+post:
+  create_at: 发表于
+  reply_at: 回复于
+  last_reply_at: 最后回复于
+  submit: 提交
+  edit:
+    edit: 编辑您的工单
+    title: 标题
+    submit: 提交
+admin:
+  title: 管理区 - %1
+  home: 主页
+  user: 用户(%1)
+  server: 服务器(%1)
+  sets: 站点设定
+  pass: 密码修改成功
+  tickets:
+    title:  !!pl
+      0: '>_< 无待处理的工单'
+      n: 待处理的工单(%1)
+    title0: 标题
+    status: 状态
+    op: 操作
+    user: 用户
+    new_one: <a href="/admin/user">点击这里创建工单</a>
+  user0:
+    id: 数据唯一ID
+    name: 用户名
+    email: E-mail
+    time: 注册时间
+    status: 状态
+    op: 操作
+  server0:
+    id: 数据唯一ID
+    texts: 备注
+    user: 用户
+    time: 开通时间
+    status: 状态
+    op: 操作
+    new_one:
+      title: 新建
+      add: 地址
+      port: 端口
+      user: 用户名
+      pass: 密码
+      salt: '加密串(Salt)'
+      belong_to: 属于
+  g:
+    sitename: 站点名称
+    links: 链接
+    submit: 提交
+server:
+  not_online: 服务器未启动/不在线
+  not_sent: 指令提交失败，服务器可能未启动
+  su: 成功
+  titles:
+    ti: 服务器管理 -  %1
+    home: 一般
+    game: 游戏
+    user: 用户
+    mod: 插件
+    other: 其他
+  home:
+    restart: 重启服务器
+    shut: 关闭服务器
+    open: 启动服务器
+    sta_su: 服务器已经开始加载/重载，请耐心等待大约3分钟，若长时间无反应，请联系管理员
+    sto_su: 服务器将在2分钟内停止，届时其他功能将暂时不可用
+    info:
+      t0: 服务器信息
+      ip: 服务器地址
+      port: 服务器端口
+      online_player: 在线玩家数量
+      version: 服务器版本
+      world: 世界信息
+  user: 
+    op:
+      t: OP管理
+      list: OP列表
+      add: 增加为OP
+      del: 移除OP权限
+    ban:
+      t: 黑名单
+      list: 黑名单列表
+      add: 添加到黑名单
+      del: 从黑名单移除
+    white:
+      t: 白名单
+      list: 白名单列表
+      add: 添加到白名单
+      del: 从白名单移除
+  mod:
+    list:
+      t: 插件列表
+      name: 名称
+      texts: 描述
+      status:
+         t: 状态
+         enable: 启用
+         disable: 禁用
+      op: 操作
+    new: 
+      info: 请上传您的插件包(最大1.23978 MB)
+      su: 上传成功，请重启服务器以加载
+      big: 文件过大！
+  game:
+    broadcast: 服务器广播
+    s: 发送
+    su: 成功，服务器响应：
+    savemap: 保存地图
+  other:
+    info: 执行其他的JSONAPI，请谨慎操作
+    info2: 查阅JSONAPI(in English)
+    i1: 指令
+    i2: 参数
+    i3: 执行 
+    i4: 执行结果

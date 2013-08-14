@@ -1,0 +1,52 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_server
+          .span2
+	          table
+	 	        tbody
+		          tr
+		            td
+			          a.btn.btn-success#home-start
+			            i.icon-play.icon-4x
+		   	              br
+		  	            = i18n.server.home.open
+		  	      tr
+		  	        td
+		  	          a.btn.btn-success#home-shut
+		  	            i.icon-stop.icon-4x
+		  	            br
+		  	            = i18n.server.home.shut
+		  	      tr
+		  	        td    
+			          a.btn.btn-success#home-reload
+			            i.icon-rotate-right.icon-4x
+			            br
+			            = i18n.server.home.restart
+	      .span7.well
+	        - if @online
+	          h4=i18n.server.home.info.t0
+	          table.table.table-hover
+	            tbody
+	              tr
+	                th=i18n.server.home.info.ip
+	                th=@api_s.getServerIp
+	              tr
+	                th=i18n.server.home.info.port
+	                th=@api_s.getServerPort
+	              tr
+	                th=i18n.server.home.info.version
+	                th=@api_s.getServerVersion
+	              tr
+	                th=i18n.server.home.info.online_player
+	                th
+	                  = @api_s.getPlayerCount.to_s + '/' + @api_s.getPlayerLimit.to_s
+	          h4=i18n.server.home.info.world
+	          = @api_s.getWorlds.to_s
+	        - else
+	          h1=i18n.server.not_online
+
+	        
+==javascript_include_tag @i.to_s

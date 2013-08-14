@@ -1,0 +1,41 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+        h2= @t[0].title
+        table.table.table-bordered
+          tr.info
+            td==@t[0].texts
+          tr.info
+            td
+              i.fui-user
+              a href=("/admin/user/#{@t[0].user}")
+                =@t[0].user
+              i.fui-time
+              =i18n.post.create_at
+              time datetime=(@t[0].time.iso8601)
+          - @t[0].replies.each do |r|
+            -if r.user == @t[0].user
+              - @c = "success" 
+            - else
+              - @c = "warning"
+            tr class=(@c)
+              td==r.texts
+            tr class=(@c)
+              td
+                i.fui-user
+                a href=("/admin/user/#{r.user}")
+                  =r.user
+                i.fui-time
+                =i18n.post.create_at
+                time datetime=(r.time.iso8601)
+        form#tk_f action="/ticket" method="post"
+          input name="topic[ticket_id]" type="hidden" value=(@t[0]._id)
+          input name="topic[action]" type="hidden" value="reply"
+          input name="topic[user]" type="hidden" value=(current_user.name)
+          input#tk_texts name="topic[texts]" type="hidden" value=""
+          #wmd-panel
+          br
+        a.btn.btn-primary#tk_n_s
+          =i18n.post.edit.submit

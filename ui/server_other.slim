@@ -1,0 +1,17 @@
+.row
+  .span12
+    .login
+      .login-screen style="padding: 2.5%; position:absolute"
+        .span10
+          == slim :_server
+          .well.well-large
+            h4=i18n.server.other.info
+	        input#other_action type="text" placeholder=(i18n.server.other.i1)
+	        input#other_with type="text" placeholder=(i18n.server.other.i2)
+	        a.btn.btn-primary#other_exec=(i18n.server.other.i3)
+	        a href="http://mcjsonapi.com/apidocs/"=i18n.server.other.info2
+	      .well.well-large
+	        h4=i18n.server.other.i4
+	        br
+	        #exec
+==javascript_include_tag @i.to_s

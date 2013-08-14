@@ -1,0 +1,99 @@
+
+$("document").ready(
+	function(){
+		$("#home-start").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"remotetoolkit.startServer"},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.home.sta_su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#home-shut").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"remotetoolkit.stopServer"},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.home.sto_su%>");location.reload()}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#home-reload").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"remotetoolkit.restartServer"},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.home.sta_su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#op_add").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"opPlayer","with":$("#op_input")[0].value},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#op_del").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"deopPlayer","with":$("#op_input")[0].value},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#ban_add").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"ban","with":$("#ban_input")[0].value},function(a){
+				if(a == "false")
+					{alert("<%=i18n.server.su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#ban_del").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"unban","with":$("#ban_input")[0].value},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#white_add").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"addToWhitelist","with":$("#white_input")[0].value},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#white_del").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":"removeFromWhitelist","with":$("#white_input")[0].value},function(a){
+				if(a == "true")
+					{alert("<%=i18n.server.su%>");location.reload();}
+				else{alert("<%=i18n.server.not_sent%>"+a)}
+			});
+		});
+		$("#other_exec").click(function(){
+			$.post("/server/apply/<%=@i%>",{"action":$("#other_action")[0].value,"with":$("#other_with")[0].value},function(a){
+				$("#exec")[0].innerHTML = a;
+			});
+		});
+		<%if online? @a%>
+			<%@api.getPlugins.each do |p| %>
+				$("<%="\#switch-#{p["name"]}"%>").click(function(){
+					if(typeof($("<%="\#check-#{p["name"]}"%>").attr("checked"))=="undefined"){
+						$("<%="\#check-#{p["name"]}"%>").removeAttr("checked","");$.post("/server/apply/<%=@i%>",{"action":"disablePlugin","with":"<%=p["name"]%>"})}
+					else {$("<%="\#check-#{p["name"]}"%>").attr("checked","");$.post("/server/apply/<%=@i%>",{"action":"enablePlugin","with":"<%=p["name"]%>"})}
+				});
+			<%end%>
+			$("#broadcast_send").click(function(){
+				$.post("/server/apply/<%=@i%>",{"action":"broadcast","with":$("#broadcast_i")[0].value},function(a){
+					alert("<%=i18n.server.game.su%>"+a);
+				});
+			});
+			$("#savemap").click(function(){
+				$.post("/server/apply/<%=@i%>",{"action":"saveMap"},function(a){
+					alert("<%=i18n.server.game.su%>"+a);
+				});
+			});
+		<%end%>
+	    $("#file_upload_1").uploadify({
+	        height        : 30,
+	        swf           : '/uploadify.swf',
+	        uploader      : '/server/upload/<%=@i%>',
+	        'onUploadSuccess' : function(file, data, response) {
+	        						if(data == "too_big")
+	        							{alert("<%=i18n.server.mod.new.big%>")}else{alert(file.name + '<%=i18n.server.mod.new.su%>')}}
+	    });
+	})

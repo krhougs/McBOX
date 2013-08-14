@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Setup</title>
+		<style type="text/css">
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			.a {
+				border-radius: 0 0 10px 10px;
+				margin: -24px auto 10px auto;
+				box-shadow: 0 0 10px #1F3147;
+				width: 900px;
+				padding-bottom: 35px;
+				height: 47px;
+			}
+			.a h1 {
+				line-height: 85px;
+				text-align: center;
+				color: #31729E;
+			}
+			form p {
+				text-align: center;
+			}
+			form input {
+				outline: 0;
+				box-shadow: 0 0 5px #69AAE6,inset 0 0 2px #00D6FF;
+				height: 30px;
+				width: 400px;
+				text-align: center;
+				border-radius: 6px;
+				border: 1px solid #799EE0;
+				background: #F2FAFF;
+			}
+			input:hover {
+				background: #BAF4F7;
+			}
+			input:focus {
+	box-shadow: 0 0 10px yellowGreen;
+	background: #FFFFEF;
+			}
+			#button {
+				width: 80px;
+				height: 35px;
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a">
+			<h1>Just some setting-up!</h1>
+			<form id="form1" name="form1" method="post" action="/install">
+				<div id="Install1">
+					<p>e.g.1. OOXX@XX.com   e.g.2. OOXX@XX.com,ABCD@XX.net</p>
+					<p><input type="text" name="adminmail" id="adminmail" placeholder="Admin Mail"/></p>
+					<p>e.g. mongodb://user:pass@OOXX.com:port/db_name</p>
+					<p><input type="text" name="mongo" id="mongo" placeholder="MongoDB URI"/></p>
+					<p><input type="submit" name="button" id="button" value="Sumbit" /></p>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
