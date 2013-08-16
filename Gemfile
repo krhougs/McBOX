@@ -11,6 +11,5 @@ gem "slim"
 gem "sinatra-authentication-oran",">=0.0.1.3"
 gem 'padrino-helpers'
 gem "maruku"
-gem "coffee-script"
 gem "minecraft-jsonapi"
 gem "thin"
